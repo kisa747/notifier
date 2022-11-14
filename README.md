@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/sphinxdocs-demo/badge/?version=latest)](https://sphinxdocs-demo.readthedocs.io/zh_CN/latest/?badge=latest)
+
 # 使用 Sphinx 创建说明文档
 
 参考：[ReadtheDocs文档](https://docs.readthedocs.io/en/stable/index.html)、[Sphinx文档](https://www.sphinx-doc.org/zh_CN/master/usage/quickstart.html) 、[myst-parser文档](https://myst-parser.readthedocs.io/en/latest/)、[furo主题](https://pradyunsg.me/furo)
