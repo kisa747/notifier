@@ -15,10 +15,9 @@ release = 'latest'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ["myst_parser"]
-
+master_doc = 'index'
 templates_path = ['_templates']
-exclude_patterns = []
-
+exclude_patterns = ["_build", "_build", "Thumbs.db", ".DS_Store"]
 language = 'zh_CN'
 
 # -- Options for HTML output -------------------------------------------------
@@ -26,7 +25,6 @@ language = 'zh_CN'
 
 html_theme = "furo"
 html_static_path = ['_static']
-
 html_logo = "_static/logo.png"
 html_favicon = "_static/favicon.png"
 pygments_style = "sphinx"
@@ -65,3 +63,4 @@ html_theme_options = {
         },
     ],
 }
+suppress_warnings = ["myst.strikethrough"]
