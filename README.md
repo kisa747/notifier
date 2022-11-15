@@ -1,4 +1,6 @@
 [![Documentation Status](https://readthedocs.org/projects/sphinxdocs-demo/badge/?version=latest)](https://sphinxdocs-demo.readthedocs.io/zh_CN/latest/?badge=latest)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Hatch project](https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg)](https://github.com/pypa/hatch)
 
 # 使用 Sphinx 创建说明文档
 

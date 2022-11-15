@@ -16,7 +16,7 @@ from mediainfo.core import Media
 
 class TestMediainfo(unittest.TestCase):
     def setUp(self):
-        path = Path(r"E:\test\mediainfo\1.mov")
+        path = Path(r'E:\test\mediainfo\1.mov')
         self.m = Media(path)
 
     def test_creat_date(self):

@@ -33,6 +33,14 @@ Documentation = "https://github.com/kisa747/mediainfo#readme"
 [tool.hatch.version]
 path = "src/mediainfo/__about__.py"
 
+
+# black配置
+[tool.black]
+line-length = 90
+skip-string-normalization = true
+include = '\.py[iw]?$'
+
+
 [tool.hatch.envs.default]
 dependencies = [
     "pytest",
