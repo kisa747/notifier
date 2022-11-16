@@ -3,3 +3,5 @@
 sphinx
 myst-parser
 furo
+# 由于启用了 autodoc，需要安装包的依赖
+pymediainfo
