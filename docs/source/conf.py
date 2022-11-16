@@ -6,8 +6,8 @@
 import sys
 from pathlib import Path
 
-a = Path(__file__).parents[2] / 'src'
 sys.path.insert(0, str(Path(__file__).parents[2] / 'src'))
+print(f'{sys.path=}')
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -29,7 +29,7 @@ extensions = [
 ]
 master_doc = 'index'
 templates_path = ['_templates']
-exclude_patterns = ['_build', '_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'build', 'Thumbs.db', '.DS_Store']
 language = 'zh_CN'
 
 # -- Options for HTML output -------------------------------------------------
