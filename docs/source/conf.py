@@ -61,6 +61,7 @@ myst_enable_extensions = [
     'tasklist',
 ]
 html_theme_options = {
+    "navigation_with_keys": True,
     'footer_icons': [
         {
             'name': 'GitHub',
@@ -73,5 +74,12 @@ html_theme_options = {
             'class': '',
         },
     ],
+    "light_css_variables": {
+        'color-header-background': '#009485',
+    },
+    "dark_css_variables": {
+        'color-background-primary': '#0D1117',
+        'color-header-background': '#546D78',
+    },
 }
 suppress_warnings = ['myst.strikethrough']
