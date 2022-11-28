@@ -25,13 +25,41 @@ classifiers = [
 ]
 
 [project.urls]
-#"Homepage" = "https://kisa747.top"
+Homepage = "https://github.com/kisa747"
 Documentation = "https://github.com/kisa747/mediainfo#readme"
 #Issues = "https://github.com/unknown/mediainfo/issues"
 #Source = "https://github.com/unknown/mediainfo"
 
 [tool.hatch.version]
 path = "src/mediainfo/__about__.py"
+
+[tool.hatch.build]
+only-packages = true
+sources = ["src"]
+[tool.hatch.build.targets.wheel]
+
+
+[tool.hatch.envs.default]
+dependencies = [
+    "pytest",
+    "pytest-cov",
+    "mypy",
+]
+
+[tool.hatch.envs.default.scripts]
+cov = "pytest --cov --cov-report html {args}"
+no-cov = "pytest -ra {args}"
+my = "mypy src {args}"
+
+[[tool.hatch.envs.test.matrix]]
+python = ["310", "311"]
+
+[tool.hatch.envs.docs]
+dependencies = ["sphinx", "myst-parser", "furo", "sphinx-autobuild"]
+
+[tool.hatch.envs.docs.scripts]
+build = "sphinx-build -M html docs/source docs/build"
+serve = "sphinx-autobuild docs/source docs/build/html"
 
 
 # black配置
@@ -41,44 +69,24 @@ skip-string-normalization = true
 include = '\.py[iw]?$'
 
 
-[tool.hatch.envs.default]
-dependencies = [
-    "pytest",
-    "pytest-cov",
-    "mypy",
-]
-[tool.hatch.envs.default.scripts]
-cov = "pytest --cov --cov-report html {args}"
-no-cov = "pytest -ra {args}"
-my = "mypy src {args}"
-
-
-[[tool.hatch.envs.test.matrix]]
-python = ["310", "39"]
-
-
 # pytest配置
 [tool.pytest.ini_options]
 #addopts = "-ra -q --strict-config --strict-markers --cov --cov-report html"
-#addopts = "-ra"
+addopts = "-s -x"
 # 源码目录
-pythonpath = "src"
+pythonpath = ["src"]
 # 测试目录
-testpaths = "tests"
+testpaths = ["tests"]
 # 控制台显示 logging 日志
 log_cli = true
 log_cli_level = 'INFO'
 log_cli_format = '[%(levelname)s]: %(message)s'
 log_cli_date_format = '%Y-%m-%d %H:%M:%S'
 
+
 [tool.coverage.run]
 branch = true
-parallel = true
-omit = [
-    "src/mediainfo/__about__.py",
-]
-
-
+omit = ["src/mediainfo/__about__.py"]
 [tool.coverage.report]
 exclude_lines = [
     "no cov",
@@ -90,14 +98,3 @@ exclude_lines = [
 # mypy配置
 [tool.mypy]
 ignore_missing_imports = true
-
-[tool.hatch.envs.docs]
-dependencies = ["sphinx", "myst-parser", "furo", "sphinx-autobuild"]
-[tool.hatch.envs.docs.scripts]
-build = "sphinx-build -M html docs/source docs/build"
-serve = "sphinx-autobuild docs/source docs/build/html"
-
-[tool.hatch.build]
-only-packages = true
-sources = ["src"]
-[tool.hatch.build.targets.wheel]
