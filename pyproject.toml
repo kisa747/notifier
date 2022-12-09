@@ -39,29 +39,6 @@ sources = ["src"]
 [tool.hatch.build.targets.wheel]
 
 
-[tool.hatch.envs.default]
-dependencies = [
-    "pytest",
-    "pytest-cov",
-    "mypy",
-]
-
-[tool.hatch.envs.default.scripts]
-cov = "pytest --cov --cov-report html {args}"
-no-cov = "pytest -ra {args}"
-my = "mypy src {args}"
-
-[[tool.hatch.envs.test.matrix]]
-python = ["310", "311"]
-
-[tool.hatch.envs.docs]
-dependencies = ["sphinx", "myst-parser", "furo", "sphinx-autobuild"]
-
-[tool.hatch.envs.docs.scripts]
-build = "sphinx-build -M html docs/source docs/build"
-serve = "sphinx-autobuild docs/source docs/build/html"
-
-
 # black配置
 [tool.black]
 line-length = 90
@@ -84,6 +61,7 @@ log_cli_format = '[%(levelname)s]: %(message)s'
 log_cli_date_format = '%Y-%m-%d %H:%M:%S'
 
 
+# 代码覆盖测试
 [tool.coverage.run]
 branch = true
 omit = ["src/mediainfo/__about__.py"]
@@ -98,3 +76,28 @@ exclude_lines = [
 # mypy配置
 [tool.mypy]
 ignore_missing_imports = true
+
+
+# hatch 自动化任务配置
+[tool.hatch.envs.default]
+dependencies = [
+    "pytest",
+    "pytest-cov",
+    "mypy",
+]
+
+[tool.hatch.envs.default.scripts]
+# 创建新的命令，不能与已有的命令相同，不能使用 pytest、mypy 等。
+no-cov = "pytest -s -ra {args}"
+cov = "pytest --cov --cov-report html {args}"
+my = "mypy src {args}"
+
+[[tool.hatch.envs.test.matrix]]
+python = ["310", "311"]
+
+[tool.hatch.envs.docs]
+dependencies = ["sphinx", "myst-parser", "furo", "sphinx-autobuild"]
+
+[tool.hatch.envs.docs.scripts]
+build = "sphinx-build -M html docs/source docs/build"
+serve = "sphinx-autobuild docs/source docs/build/html"
