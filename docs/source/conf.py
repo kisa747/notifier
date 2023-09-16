@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).parents[2] / 'src'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = '智行天下'
-project_copyright = '2022, kisa747'
+project_copyright = '2023, kisa747'
 author = 'kisa747'
 release = 'latest'
 

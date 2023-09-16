@@ -12,8 +12,3 @@ hatch
 
 pytest
 pytest-cov
-
-Sphinx
-sphinx-autobuild
-furo
-myst_parser
