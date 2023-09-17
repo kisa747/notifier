@@ -3,5 +3,3 @@
 sphinx
 myst-parser
 furo
-# 自动预览工具
-sphinx-autobuild
