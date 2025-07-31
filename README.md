@@ -1,56 +1,36 @@
-[![Documentation Status](https://readthedocs.org/projects/sphinxdocs-demo/badge/?version=latest)](https://sphinxdocs-demo.readthedocs.io/zh_CN/latest/?badge=latest)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Documentation Status](https://readthedocs.org/projects/notifier-docs/badge/?version=latest)](https://notifier-docs.readthedocs.io/?badge=latest)
 [![Hatch project](https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg)](https://github.com/pypa/hatch)
 
-# 使用 Sphinx 创建说明文档
+# Notifier 说明文档
 
-参考：[ReadtheDocs文档](https://docs.readthedocs.io/en/stable/index.html)、[Sphinx文档](https://www.sphinx-doc.org/zh_CN/master/usage/quickstart.html) 、[myst-parser文档](https://myst-parser.readthedocs.io/en/latest/)、[furo主题](https://pradyunsg.me/furo)
+官方文档：https://notifier-docs.readthedocs.io/
 
-## 安装需求的库
-
+## Quik Start
+### 1、安装
 ```sh
-pip install sphinx
-# furo主题，非常漂亮
-pip install furo
-# markdown 支持
-pip install myst-parser
-
-# 自动预览工具
-pip install sphinx-autobuild
+# 使用pip安装最新版本
+python -m pip install git+https://github.com/kisa747/notifier
+# 虚拟环境推荐使用 uv 安装
+uv add git+https://github.com/kisa747/notifier
 ```
 
-## 创建项目
-
-创建项目，在项目目录执行以下操作：
+### 2、命令行使用
 
 ```sh
-mkdir docs
-cd docs
-sphinx-quickstart
+# 弹出一条消息
+python -m notifier -i "这是一条信息"
+python -m notifier -w "这是一条警告"
+python -m notifier -e "这是一条错误"
 
-# 根据提示回答指定的问题
-# language: zh_CN
+# 设置10分钟后消息过期（默认24小时）
+python -m notifier -w "这是一条警告" -t 10
 ```
 
-## 实时预览
+### 3、python程序中使用
+```python
+import notifier
 
-```sh
-# 实时预览，地址
-sphinx-autobuild source build/html
+notifier.info('这是一条信息', '信息', 10)
+notifier.warning('这是一条警告', '警告', 10)
+notifier.info('这是一条错误', '错误', 10)
 ```
-
-## 构建静态文件
-
-```sh
-# 构建静态网站文件
-make html
-```
-
-## furo主题
-
-采用furo主题的网站：
-
-https://pip.pypa.io
-
-https://setuptools.pypa.io
-

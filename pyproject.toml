@@ -3,43 +3,57 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mediainfo"
-description = '一个方便的邮件收发库'
+name = "notifier"
+description = '一个弹出Windows toast 消息的小公举'
 readme = "README.md"
-# hatch 不会自动查找 LICENSE 文件，需要手动指定。
-license-files = { paths = ["LICENSE"] }
-requires-python = ">=3.9"
-dependencies = ["pymediainfo"]
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = []
 dynamic = ["version"]
 keywords = ['python']
-authors = [
-    { name = "kevin", email = "kevin@example.com" },
-]
+authors = [{ name = "kevin", email = "kevin@example.com" }]
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
     "Development Status :: 5 - Production/Stable",
 ]
 
 [project.urls]
-Homepage = "https://github.com/kisa747"
-Documentation = "https://github.com/kisa747/mediainfo#readme"
+Homepage = "https://github.com/kisa747/notifier"
+Documentation = "https://github.com/kisa747/notifier#readme"
 #Issues = "https://github.com/unknown/mediainfo/issues"
-#Source = "https://github.com/unknown/mediainfo"
+Source = "https://github.com/kisa747/notifier"
+
+
+[dependency-groups]
+dev = ["hatch>=1.14.1"]
+docs = [
+    "furo>=2025.7.19",
+    "myst-parser>=3.0.1",
+    "sphinx>=7.4.7",
+    "sphinx-autobuild>=2024.10.3",
+]
+test = ["mypy", "pytest", "pytest-cov"]
+hint = ["ruff"]
+
+[tool.uv]
+default-groups = ["dev", "docs"]
+
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
 
 [tool.hatch.version]
-path = "src/mediainfo/__about__.py"
+path = "src/notifier/__about__.py"
 
 [tool.hatch.build]
 only-packages = true
 sources = ["src"]
 [tool.hatch.build.targets.wheel]
-
+packages = ["src/notifier"]
 
 # black配置
 [tool.black]
@@ -66,13 +80,9 @@ log_cli_date_format = '%Y-%m-%d %H:%M:%S'
 # 代码覆盖测试
 [tool.coverage.run]
 branch = true
-omit = ["src/mediainfo/__about__.py"]
+omit = ["src/notifier/__about__.py"]
 [tool.coverage.report]
-exclude_lines = [
-    "no cov",
-    "if __name__ == .__main__.:",
-    "if TYPE_CHECKING:",
-]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
 
 
 # mypy配置
@@ -82,11 +92,7 @@ ignore_missing_imports = true
 
 # hatch 自动化任务配置
 [tool.hatch.envs.default]
-dependencies = [
-    "pytest",
-    "pytest-cov",
-    "mypy",
-]
+dependencies = ["pytest", "pytest-cov", "mypy"]
 
 [tool.hatch.envs.default.scripts]
 # 创建新的命令，不能与已有的命令相同，不能使用 pytest、mypy 等。
