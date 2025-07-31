@@ -106,7 +106,6 @@ dependencies = [
 
 classifiers 解释：https://pypi.org/classifiers/
 
->Programming Language :: Python :: 3
 >
 >Programming Language :: Python :: 3 :: Only
 >
