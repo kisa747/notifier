@@ -11,7 +11,7 @@ import argparse
 import logging
 import sys
 
-import notifier
+from notifier.toast_tip import _toast
 
 
 def main() -> None:
@@ -26,27 +26,26 @@ def main() -> None:
         metavar='消息过期分钟数值',
         help='设置消息过期时间',
         type=int,
-        default=0,
+        default=60 * 24,
     )
     args = arg_parser.parse_args(args=None if len(sys.argv) > 1 else ['--help'])
 
     if args.info:  # 发送info通知
-        notifier_type = 'info'
+        notifier_type = 'Info'
         text = args.info
     elif args.warning:  # 发送warning通知
-        notifier_type = 'warning'
+        notifier_type = 'Warning'
         text = args.warning
     elif args.error:  # 发送error通知
-        notifier_type = 'error'
+        notifier_type = 'Error'
         text = args.error
     else:
-        notifier_type = 'info'
+        notifier_type = 'Info'
         text = ''
-        # arg_parser.print_help()
 
     if text:
-        expiration_minutes = args.expirationminutes if args.expirationminutes else 0
-        notifier.toast(text, icon=notifier_type, expiration_minutes=expiration_minutes)  # type: ignore
+        expiration_minutes = args.expirationminutes if args.expirationminutes else 60 * 24
+        _toast(text, icon=notifier_type, expiration_minutes=expiration_minutes)  # type: ignore
 
 
 if __name__ == '__main__':

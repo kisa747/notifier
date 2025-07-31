@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Literal
 
 
-def toast(
+def _toast(
     text: str,
     title: str = '',
     icon: Literal['Info', 'Warning', 'Error'] = 'Info',
@@ -47,15 +47,15 @@ def toast(
 
 
 def info(text: str, title: str = '', expiration_minutes: int = 24 * 60) -> int:
-    return toast(text, title, 'Info', expiration_minutes)
+    return _toast(text, title, 'Info', expiration_minutes)
 
 
 def warning(text: str, title: str = '', expiration_minutes: int = 24 * 60) -> int:
-    return toast(text, title, 'Warning', expiration_minutes)
+    return _toast(text, title, 'Warning', expiration_minutes)
 
 
 def error(text: str, title: str = '', expiration_minutes: int = 24 * 60) -> int:
-    return toast(text, title, 'Error', expiration_minutes)
+    return _toast(text, title, 'Error', expiration_minutes)
 
 
 def _test():
