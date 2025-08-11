@@ -4,11 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "notifier"
-description = '一个弹出Windows toast 消息的小公举'
+description = '一个弹出Windows toast 消息的小工具'
 readme = "README.md"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = []
 dynamic = ["version"]
 keywords = ['python']
@@ -23,8 +23,11 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/kisa747/notifier"
 Documentation = "https://github.com/kisa747/notifier#readme"
-#Issues = "https://github.com/unknown/mediainfo/issues"
+#Issues = "https://github.com/unknown/notifier/issues"
 Source = "https://github.com/kisa747/notifier"
+
+[project.scripts]
+notifier = "notifier.__main__:main"
 
 
 [dependency-groups]
@@ -38,15 +41,16 @@ docs = [
 test = ["mypy", "pytest", "pytest-cov"]
 hint = ["ruff"]
 
+
 [tool.uv]
 default-groups = ["dev", "docs"]
-
 
 [[tool.uv.index]]
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 default = true
 
 [tool.hatch.version]
+# 参考：https://hatch.pypa.io/
 path = "src/notifier/__about__.py"
 
 [tool.hatch.build]
@@ -54,12 +58,6 @@ only-packages = true
 sources = ["src"]
 [tool.hatch.build.targets.wheel]
 packages = ["src/notifier"]
-
-# black配置
-[tool.black]
-line-length = 90
-skip-string-normalization = true
-include = '\.py[iw]?$'
 
 
 # pytest配置
@@ -109,3 +107,10 @@ dependencies = ["sphinx", "myst-parser", "furo", "sphinx-autobuild"]
 [tool.hatch.envs.docs.scripts]
 build = "sphinx-build -M html docs/source docs/build"
 serve = "sphinx-autobuild docs/source docs/build/html"
+
+
+# black配置
+[tool.black]
+line-length = 90
+skip-string-normalization = true
+include = '\.py[iw]?$'

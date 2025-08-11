@@ -11,7 +11,7 @@ import argparse
 import logging
 import sys
 
-from notifier.toast_tip import _toast
+from notifier._toast_tip import _toast
 
 
 def main() -> None:

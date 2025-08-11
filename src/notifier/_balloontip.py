@@ -17,7 +17,7 @@ def _balloontip(
     title: str = 'Information',
     icon: Literal['None', 'Info', 'Warning', 'Error'] = 'Info',
 ) -> int:
-    ps_file = f'{Path(__file__).with_name("balloontip.ps1")}'
+    ps_file = f'{Path(__file__).with_name("_balloontip.ps1")}'
     r = subprocess.run(
         [
             'powershell',

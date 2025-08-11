@@ -7,6 +7,6 @@
 __author__ = 'kevin'
 __date__ = '2022/11/18'
 
-from .toast_tip import error, info, warning
+from ._toast_tip import error, info, warning
 
 __all__ = ('info', 'warning', 'error')

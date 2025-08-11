@@ -28,7 +28,7 @@ def _toast(
     :return: returncode
     """
     title = title or icon  # 如果未设置 title，就使用 icon 的名字
-    ps_file = f'{Path(__file__).with_name("toast.ps1")}'
+    ps_file = f'{Path(__file__).with_name("_toast_tip.ps1")}'
     r = subprocess.run(
         [
             'powershell',

@@ -9,8 +9,8 @@ __date__ = '2022/11/18'
 
 import logging
 
-from notifier.balloontip import info as balloontip_info
-from notifier.toast_tip import info as toast_info
+from notifier._balloontip import info as balloontip_info
+from notifier._toast_tip import info as toast_info
 
 
 def test_balloontip():
