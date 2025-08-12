@@ -7,6 +7,8 @@
 __author__ = 'kevin'
 __date__ = '2022/11/18'
 
+import logging
+import platform
 import subprocess
 from pathlib import Path
 from typing import Literal
@@ -16,31 +18,35 @@ def _balloontip(
     text: str,
     title: str = 'Information',
     icon: Literal['None', 'Info', 'Warning', 'Error'] = 'Info',
-) -> int:
+) -> int | None:
     ps_file = f'{Path(__file__).with_name("_balloontip.ps1")}'
-    r = subprocess.run(
-        [
-            'powershell',
-            '-ExecutionPolicy',
-            'RemoteSigned',
-            '-File',
-            ps_file,
-            text,
-            title,
-            icon,
-        ],
-        shell=True,
-    )
-    return r.returncode
+    if platform.system() == 'Windows':
+        r = subprocess.run(
+            [
+                'powershell',
+                '-ExecutionPolicy',
+                'RemoteSigned',
+                '-File',
+                ps_file,
+                text,
+                title,
+                icon,
+            ],
+            shell=True,
+        )
+        return r.returncode
+    else:
+        logging.warning(f'{platform.system()} 系统下无法使用 Notifier')
+        return None
 
 
-def info(text: str, title: str = 'Information') -> int:
+def info(text: str, title: str = 'Information') -> int | None:
     return _balloontip(text, title, 'Info')
 
 
-def warning(text: str, title: str = 'Information') -> int:
+def warning(text: str, title: str = 'Information') -> int | None:
     return _balloontip(text, title, 'Warning')
 
 
-def error(text: str, title: str = 'Information') -> int:
+def error(text: str, title: str = 'Information') -> int | None:
     return _balloontip(text, title, 'Error')

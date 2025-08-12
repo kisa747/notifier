@@ -11,9 +11,9 @@
 
 ```sh
 # 使用pip安装最新版本
-python -m pip install git+https://github.com/kisa747/notifier
+python -m pip install notifier@git+https://github.com/kisa747/notifier@main
 # 虚拟环境推荐使用 uv 安装
-uv add git+https://github.com/kisa747/notifier@
+uv add git+https://github.com/kisa747/notifier
 ```
 
 ### 2、命令行使用

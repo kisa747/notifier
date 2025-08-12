@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-发送toast消息工具
+Windows 系统下发送 toast 消息
 """
 
 __author__ = 'kevin'
@@ -17,9 +17,9 @@ from notifier._toast_tip import _toast
 def main() -> None:
     # action='store'，默认为 store，所以可以省略；type=str，默认为字符串，也可以省略。
     arg_parser = argparse.ArgumentParser(prog=__package__, description=__doc__)
-    arg_parser.add_argument('-i', '--info', metavar='消息内容', help='发送info通知')
-    arg_parser.add_argument('-w', '--warning', metavar='消息内容', help='发送warning通知')
-    arg_parser.add_argument('-e', '--error', metavar='消息内容', help='发送error通知')
+    arg_parser.add_argument('-i', '--info', metavar='通知消息', help='发送info通知')
+    arg_parser.add_argument('-w', '--warning', metavar='警告消息', help='发送warning通知')
+    arg_parser.add_argument('-e', '--error', metavar='错误消息', help='发送error通知')
     arg_parser.add_argument(
         '-t',
         '--expirationminutes',

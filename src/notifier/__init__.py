@@ -9,4 +9,4 @@ __date__ = '2022/11/18'
 
 from ._toast_tip import error, info, warning
 
-__all__ = ('info', 'warning', 'error')
+__all__ = ['info', 'warning', 'error']
