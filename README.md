@@ -7,16 +7,16 @@
 
 ## Quik Start
 
-### 1、安装
+### 安装
 
 ```sh
-# 使用pip安装最新版本
+# 使用 pip 安装
 python -m pip install notifier@git+https://github.com/kisa747/notifier@main
-# 虚拟环境推荐使用 uv 安装
+# 使用 uv 安装
 uv add git+https://github.com/kisa747/notifier
 ```
 
-### 2、命令行使用
+### 命令行使用
 
 ```sh
 # 弹出一条消息
@@ -24,11 +24,11 @@ notifier -i "这是一条信息"
 notifier -w "这是一条警告"
 notifier -e "这是一条错误"
 
-# 设置10分钟后消息过期（默认24小时）
+# 设置 10 分钟后消息过期（默认 24 小时）
 notifier -w "这是一条警告" -t 10
 ```
 
-### 3、python程序中使用
+### python 程序中中使用
 
 ```python
 import notifier

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "notifier"
-description = '一个弹出Windows toast 消息的小工具'
+description = '一个弹出 Windows toast 消息的小工具'
 readme = "README.md"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
@@ -45,9 +45,13 @@ hint = ["ruff"]
 [tool.uv]
 default-groups = ["dev", "docs"]
 
-[[tool.uv.index]]
+[[tool.uv.index]] # uv 默认不会读取 pip 的配置，可以配置多个地址
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 default = true
+
+[[tool.uv.index]]
+url = "https://mirrors.ustc.edu.cn/pypi/simple"
+
 
 [tool.hatch.version]
 # 参考：https://hatch.pypa.io/
