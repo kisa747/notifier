@@ -28,7 +28,7 @@ notifier -e "这是一条错误"
 notifier -w "这是一条警告" -t 10
 ```
 
-### python 程序中中使用
+### python 程序中使用
 
 ```python
 import notifier
